@@ -40,12 +40,14 @@ test.describe('todo tests', () => {
     await expect(page_checked_item.locator("li").filter({ hasText: "Pay electric bill" })).toHaveClass("completed");
   });
 
+
   test2('can filter for uncompleted tasks', async ({ page_checked_item }) => {
     await page_checked_item.getByRole("link", { name: "Active" }).click();
     var tasks = page_checked_item.locator(".todo-list li");
     await expect(tasks).toHaveCount(1);
     await expect(tasks.first()).toHaveText("Walk the dog");
   });
+
 
   test2('can filter for completed tasks', async ({ page_checked_item }) => {
     await page_checked_item.getByRole("link", { name: "Completed" }).click();

@@ -77,9 +77,8 @@ test.describe('Actions', () => {
     var buttons = await page.locator('.action-labels>.label');
     for( var i = 0; i != await buttons.count(); i++) {
       await buttons.nth(i).click();
-    };
+    }
     await page.locator(".action-opacity>.btn").click({ force: true });
-
   });
 
 

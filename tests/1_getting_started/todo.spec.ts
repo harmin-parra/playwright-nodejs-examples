@@ -61,6 +61,7 @@ test.describe('todo tests', () => {
     await page_checked_item.getByRole("button", { name: "Clear completed" }).click();
     var tasks = page_checked_item.locator(".todo-list li");
     await expect(tasks).toHaveCount(1)
+    await expect(tasks.first()).not.toHaveText("Pay electric bill")
     await expect(tasks.first()).toHaveText("Walk the dog")
   });
 

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 const assert = require('node:assert');
 
-test.describe('Actions', () => {
+test.describe('Aliasing', () => {
 
   test.beforeEach(async ({ page }) => {
     await page.goto("https://example.cypress.io/commands/aliasing");

@@ -38,7 +38,7 @@ test.describe('Actions', () => {
 
   test('blur() - blur off a DOM element', async({ page }) => {
     var elem = page.locator(".action-blur")
-    await elem.type("About to blur")
+    await elem.fill("About to blur")
     await elem.blur()
     await expect(elem).toHaveClass(new RegExp(/(^|\s)error/))
     // Playwright doesn't have prev() locator
@@ -65,16 +65,16 @@ test.describe('Actions', () => {
 
   test('click() - click on a DOM element', async({ page }) => {
     await page.locator(".action-btn").click();
-    var canvas = await page.locator("#action-canvas");
+    var canvas = page.locator("#action-canvas");
     // Playwright doesn't have keyword positions: 'topLeft', 'top', 'topRight', 'left', etc.
-    canvas.click({ position: {'x': 80, 'y': 75} });
-    canvas.click({ position: {'x': 175, 'y': 75} });
-    canvas.click({ position: {'x': 80, 'y': 165} });
-    canvas.click({ position: {'x': 100, 'y': 185} });
-    canvas.click({ position: {'x': 125, 'y': 190} });
-    canvas.click({ position: {'x': 150, 'y': 185} });
-    canvas.click({ position: {'x': 170, 'y': 165} });
-    var buttons = await page.locator('.action-labels>.label');
+    await canvas.click({ position: {'x': 80, 'y': 75} });
+    await canvas.click({ position: {'x': 175, 'y': 75} });
+    await canvas.click({ position: {'x': 80, 'y': 165} });
+    await canvas.click({ position: {'x': 100, 'y': 185} });
+    await canvas.click({ position: {'x': 125, 'y': 190} });
+    await canvas.click({ position: {'x': 150, 'y': 185} });
+    await canvas.click({ position: {'x': 170, 'y': 165} });
+    var buttons = page.locator('.action-labels>.label');
     for( var i = 0; i != await buttons.count(); i++) {
       await buttons.nth(i).click();
     }

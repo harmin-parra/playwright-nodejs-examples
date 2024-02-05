@@ -11,8 +11,8 @@ test.describe('Aliasing', () => {
   test('variable for a DOM element for later use', async({ page }) => {
     var firstBtn = await page.locator(".as-table").locator("tbody>tr").first().locator("td").first().locator("button")
     await firstBtn.click()
-    expect(firstBtn).toHaveClass(new RegExp("\\bbtn-success\\b"));
-    expect(firstBtn).toHaveText("Changed");
+    await expect(firstBtn).toHaveClass(new RegExp("\\bbtn-success\\b"));
+    await expect(firstBtn).toHaveText("Changed");
   });
 
 

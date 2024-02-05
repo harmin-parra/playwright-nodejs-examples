@@ -22,9 +22,9 @@ test.describe('Connectors', () => {
 
   test('evaluate() - invoke a function on the current subject', async({ page }) => {
     var elem = page.locator(".connectors-div")
-    expect(elem).not.toBeVisible();
+    await expect(elem).not.toBeVisible();
     await elem.evaluate(elem => elem.style.display = 'initial');
-    expect(elem).toBeVisible();
+    await expect(elem).toBeVisible();
   });
 
 
@@ -43,10 +43,10 @@ test.describe('Connectors', () => {
   test('invokes a callback function with the current subject', async({ page }) => {
     var elms = page.locator(".connectors-list > li");
     assert(await elms.count() == 3, "3 items");
-    expect(elms).toHaveCount(3);
-    expect(elms.nth(0)).toContainText("Walk the dog");
-    expect(elms.nth(1)).toContainText("Feed the cat");
-    expect(elms.nth(2)).toContainText("Write JavaScript");
+    await expect(elms).toHaveCount(3);
+    await expect(elms.nth(0)).toContainText("Walk the dog");
+    await expect(elms.nth(1)).toContainText("Feed the cat");
+    await expect(elms.nth(2)).toContainText("Write JavaScript");
   });
 
 

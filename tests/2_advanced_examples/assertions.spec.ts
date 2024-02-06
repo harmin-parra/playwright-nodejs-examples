@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 const assert = require('node:assert');
+var lodash = require('lodash');
+
 
 test.describe('Assertions', () => {
 
@@ -28,7 +30,7 @@ test.describe('Assertions', () => {
     assert(true == true);
     var obj = {'foo': 'bar'};
     assert(obj == obj);
-    assert(JSON.stringify(obj) == JSON.stringify({'foo': 'bar'}));
+    assert(lodash.isEqual(obj, {'foo': 'bar'}));
     assert(RegExp("bar$", 'i').test("FooBar"));
 
   });
@@ -40,7 +42,7 @@ test.describe('Assertions', () => {
     for (var i=0; i != await elms.count(); i++)
       values.push(await elms.nth(i).textContent());
     assert(values.length == 3, "has 3 paragraphs");
-    assert(JSON.stringify(values) == JSON.stringify(
+    assert(lodash.isEqual(values, 
       [
       'Some text from first p',
       'More text from second p',

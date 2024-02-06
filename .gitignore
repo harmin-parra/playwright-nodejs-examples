@@ -4,5 +4,6 @@ package-lock.json
 
 /test-results/
 /screenshots/
+tests/fixtures/users.json
 /playwright-report/
 /playwright/.cache/

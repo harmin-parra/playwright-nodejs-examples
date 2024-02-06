@@ -95,9 +95,9 @@ test.describe('Assertions', () => {
     // Playwright and Python don't allow asynchronous callbacks in assertions
     var elem = page.locator("#random-number")
     //test.setTimeout(10000);
-    //expect(await elem.textContent()).toMatch(new RegExp("[0-9]+"));
+    //expect(await elem.textContent()).toMatch(new RegExp("^[0-9]+$"));
     await expect(async () => {
-      expect(await elem.textContent()).toMatch(new RegExp("[0-9]+"));
+      expect(await elem.textContent()).toMatch(new RegExp("^[0-9]+$"));
     }).toPass( {timeout: 10000 });
     var value = parseInt(await elem.textContent());
     assert(1 < value && value < 10);

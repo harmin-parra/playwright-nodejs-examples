@@ -94,16 +94,12 @@ test.describe('Assertions', () => {
   test('retries the function callback until assertions pass', async({ page }) => {
     // Playwright and Python don't allow asynchronous callbacks in assertions
     var elem = page.locator("#random-number")
-    async function wait_for_integer() {
-      while (true) {
-        try {
-          var value = parseInt(await elem.textContent());
-          if (!Number.isNaN(value))
-            return value;
-        } catch(err) { }
-      }
-    }
-    var value = await wait_for_integer();
+    //test.setTimeout(10000);
+    //expect(await elem.textContent()).toMatch(new RegExp("[0-9]+"));
+    await expect(async () => {
+      expect(await elem.textContent()).toMatch(new RegExp("[0-9]+"));
+    }).toPass( {timeout: 10000 });
+    var value = parseInt(await elem.textContent());
     assert(1 < value && value < 10);
   });
 

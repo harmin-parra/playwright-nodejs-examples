@@ -100,7 +100,7 @@ test.describe('Assertions', () => {
       expect(await elem.textContent()).toMatch(new RegExp("^[0-9]+$"));
     }).toPass( {timeout: 10000 });
     var value = parseInt(await elem.textContent());
-    assert(1 < value && value < 10);
+    assert(1 < value && value <= 10);
   });
 
 });

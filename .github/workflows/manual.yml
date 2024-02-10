@@ -1,0 +1,31 @@
+name: Playwright Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'The browser to use'
+        default: 'chromium'
+        required: true
+        type: choice
+        options:
+        - all
+        - chromium
+        - firefox
+        - webkit
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.41.1-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install
+        run: npm install
+      - name: Test
+        run: npx playwright test --browser ${{ inputs.browser }}
+        env:
+          HOME: /root

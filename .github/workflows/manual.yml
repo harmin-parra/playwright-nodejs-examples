@@ -26,6 +26,6 @@ jobs:
       - name: Install
         run: npm install
       - name: Test
-        run: npx playwright test --browser ${{ inputs.browser }}
+        run: npx playwright test --project ${{ inputs.browser }}
         env:
           HOME: /root
